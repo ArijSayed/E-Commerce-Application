@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dnd.doughndrink.dtos.UserDTO;
+import com.dnd.doughndrink.exceptions.AlreadyExistException;
 import com.dnd.doughndrink.mappers.UserMapper;
 import com.dnd.doughndrink.models.User;
 import com.dnd.doughndrink.repositories.UserRepository;
@@ -38,9 +39,12 @@ public class UserService {
     // insert
 
     public void save(UserDTO userDTO) {
-       final User user = userMapper.map(userDTO);
-      userRepository.save(user);
-    }
+      final User user = userMapper.map(userDTO);
+      if(userRepository.existsByEmail(user.getEmail())){
+        throw new AlreadyExistException("Email already used");
+      }
+     userRepository.save(user);
+   }
 
 
     public UserDTO findUserById(int id){
