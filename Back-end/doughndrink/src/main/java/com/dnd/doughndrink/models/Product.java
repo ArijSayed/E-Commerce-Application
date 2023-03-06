@@ -3,8 +3,10 @@ package com.dnd.doughndrink.models;
 
 
 import java.util.HashSet;
-import java.util.Set; 
- 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*; 
 import static jakarta.persistence.GenerationType.IDENTITY;  
 
@@ -28,6 +30,7 @@ public class Product  implements java.io.Serializable {
      private String description;
      private byte[] image;
      private Set<OrderContainsProduct> orderContainsProducts = new HashSet<OrderContainsProduct>(0);
+     @JsonBackReference
      private Set<User> users = new HashSet<User>(0);
 
     public Product() {
@@ -65,7 +68,7 @@ public class Product  implements java.io.Serializable {
         this.productId = productId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.LAZY , cascade = CascadeType.ALL)
     @JoinColumn(name="sub_category_id")
     public SubCategory getSubCategory() {
         return this.subCategory;
@@ -144,7 +147,7 @@ public class Product  implements java.io.Serializable {
         this.orderContainsProducts = orderContainsProducts;
     }
 
-@ManyToMany(fetch=FetchType.LAZY, mappedBy="products")
+@ManyToMany(fetch=FetchType.LAZY, mappedBy="products", cascade = CascadeType.ALL)
     public Set<User> getUsers() {
         return this.users;
     }
