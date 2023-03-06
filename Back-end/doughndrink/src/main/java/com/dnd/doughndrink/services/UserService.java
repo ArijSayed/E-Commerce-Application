@@ -8,14 +8,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.dnd.doughndrink.dtos.UserDTO;
 import com.dnd.doughndrink.mappers.UserMapper;
 import com.dnd.doughndrink.models.User;
 import com.dnd.doughndrink.repositories.UserRepository;
-
 import lombok.RequiredArgsConstructor;
-// import lombok.extern.slf4j.Slf4j;
 import lombok.extern.slf4j.Slf4j;
 
 
