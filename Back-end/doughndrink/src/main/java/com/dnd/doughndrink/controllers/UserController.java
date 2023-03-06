@@ -18,7 +18,7 @@ import com.dnd.doughndrink.dtos.UserDTO;
 import com.dnd.doughndrink.services.UserService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
