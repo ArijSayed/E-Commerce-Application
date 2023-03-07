@@ -45,4 +45,9 @@ public class ProductController {
     public void updateProduct(@RequestBody ProductDTO productDTO){
         productService.saveProduct(productDTO);
     }
+
+    @GetMapping("/subcategory/{id}")
+    public List<ProductDTO> getProductBySubCategoryId(@PathVariable("id") int sub_category_id){
+       return productService.getProductBySubCategoryId(sub_category_id);
+    }
 }
