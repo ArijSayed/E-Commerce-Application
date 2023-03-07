@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dnd.doughndrink.dtos.UserDTO;
+import com.dnd.doughndrink.dtos.UsersRoleDTO;
 import com.dnd.doughndrink.services.UserService;
 
 @RestController
@@ -39,6 +40,16 @@ public class UserController {
         return userService.findAll();
     }
 
+
+
+    @GetMapping("/role")
+    public List<UsersRoleDTO> getAll(){
+        return userService.getAll();
+    }
+
+
+
+
     @GetMapping("/{id}")
     public UserDTO findUserById(@PathVariable int id){
         return userService.findUserById(id);
@@ -51,6 +62,7 @@ public class UserController {
 
 @PutMapping
    public void  update( @RequestBody UserDTO userDTO) {
+  
     userService.save(userDTO);
    }
     
