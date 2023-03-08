@@ -13,6 +13,8 @@ import com.dnd.doughndrink.mappers.SubCategoryMapper;
 import com.dnd.doughndrink.models.Product;
 import com.dnd.doughndrink.models.SubCategory;
 import com.dnd.doughndrink.repositories.ProductRepository;
+import com.dnd.doughndrink.repositories.SubCategoryRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,13 +24,14 @@ import lombok.extern.slf4j.Slf4j;
 
 public class ProductService {
 
-    // private final SubCategoryService subCategoryService;
+    private final SubCategoryRepository subCategoryRepository;
     private final ProductRepository productRepository;
 
     
     @Autowired
     private final ProductMapper productMapper;
-    // private final SubCategoryMapper subCategoryMapper;
+    @Autowired
+    private final SubCategoryMapper subCategoryMapper;
 
    
     public ProductDTO findProductById(int product_id){
@@ -46,10 +49,10 @@ public class ProductService {
         productRepository.deleteById(product_id);
     }
 
-    public void saveProduct(ProductDTO productDTO){
-        Product product=productMapper.map(productDTO);
-        productRepository.save(product);
-    }
+    // public void saveProduct(ProductDTO productDTO){
+    //     Product product=productMapper.map(productDTO);
+    //     productRepository.save(product);
+    // }
 
     // public List<ProductDTO> findProductsBySubCategoryId(int sub_category_id){
     //     SubCategoryDTO subCategoryDTO=subCategoryService.findSubCategoryById(sub_category_id);
@@ -61,6 +64,36 @@ public class ProductService {
     public List<ProductDTO> getProductBySubCategoryId(int sub_category_id){
        List<Product> products= productRepository.findAllBySubCategorySubCategoryId(sub_category_id);
        return productMapper.map(products); 
+    }
+
+    // public void addProduct(ProductDTO productDTO){
+    //     SubCategory subCategory = subCategoryRepository.findById(subCategoryMapper.map(productDTO.getSubCategory()).getSubCategoryId() ).orElse(null);
+    //     if(null ==  subCategory){
+    //         subCategory = new SubCategory();
+    //     }
+
+    //     Product product = productMapper.map(productDTO);
+
+    //     subCategory.setSubCtgName(product.getSubCategory().getSubCtgName());
+    //     product.setSubCategory(subCategory);
+    //     productRepository.save(product);
+
+
+    // }
+
+    public void addProduct(ProductDTO productDTO){
+        SubCategory subCategory = subCategoryRepository.findById(subCategoryMapper.map(productDTO.getSubCategory()).getSubCategoryId() ).orElse(null);
+        if(null ==  subCategory){
+            subCategory = new SubCategory();
+        }
+
+        Product product = productMapper.map(productDTO);
+
+        subCategory.setSubCtgName(product.getSubCategory().getSubCtgName());
+        product.setSubCategory(subCategory);
+        productRepository.save(product);
+
+
     }
 
 
