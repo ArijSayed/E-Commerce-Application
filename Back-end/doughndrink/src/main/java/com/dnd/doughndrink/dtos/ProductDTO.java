@@ -6,9 +6,8 @@ import lombok.Data;
 
 @Data
 public class ProductDTO {
-    
+    private SubCategoryDTO subCategoryDTO;
     private Integer productId;
-    // private SubCategory subCategory;
     private String name;
     private String size;
     private float price;
@@ -16,9 +15,9 @@ public class ProductDTO {
     private String description;
     private byte[] image;
     
-    public ProductDTO(String name, String size, float price, String stock,
+    public ProductDTO(SubCategoryDTO subCategoryDTO, String name, String size, float price, String stock,
             String description, byte[] image) {
-        // this.subCategory.setSubCategoryId(subCategory_id);
+        this.subCategoryDTO=subCategoryDTO;
         this.name = name;
         this.size = size;
         this.price = price;
