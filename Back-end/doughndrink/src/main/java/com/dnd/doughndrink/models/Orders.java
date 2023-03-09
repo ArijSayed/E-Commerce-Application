@@ -25,6 +25,7 @@ public class Orders  implements java.io.Serializable {
      private String paymentType;
      private Date shippingDate;
      private Date orderDate;
+     private Double totaPrice;
      private Set<OrderContainsProduct> orderContainsProducts = new HashSet<OrderContainsProduct>(0);
 
     public Orders() {
@@ -83,6 +84,15 @@ public class Orders  implements java.io.Serializable {
     
     public void setShippingDate(Date shippingDate) {
         this.shippingDate = shippingDate;
+    }
+
+    @Column(name="total_price", nullable=false, length=19)
+    public Double getTotaPrice() {
+        return this.totaPrice;
+    }
+    
+    public void setTotaPrice(Double totaPrice) {
+        this.totaPrice = totaPrice;
     }
 
     @Temporal(TemporalType.TIMESTAMP)

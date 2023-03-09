@@ -10,9 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dnd.doughndrink.dtos.UserDTO;
+import com.dnd.doughndrink.dtos.UsersRoleDTO;
+import com.dnd.doughndrink.exceptions.AlreadyExistException;
 import com.dnd.doughndrink.mappers.UserMapper;
+import com.dnd.doughndrink.mappers.UsersRoleMapper;
 import com.dnd.doughndrink.models.User;
 import com.dnd.doughndrink.repositories.UserRepository;
+import com.dnd.doughndrink.repositories.UsersRoleRepository;
 
 import lombok.RequiredArgsConstructor;
 // import lombok.extern.slf4j.Slf4j;
@@ -26,21 +30,35 @@ public class UserService {
 
 
    private final   UserRepository  userRepository;
+  private final UsersRoleRepository usersRoleRepository;
 
    @Autowired
    private   final UserMapper userMapper;
+    @Autowired
+   private final UsersRoleMapper usersRoleMapper;
   //select
    public List<UserDTO> findAll() {
     
        return userMapper.map(userRepository.findAll());
        
    }
+   
+   public List<UsersRoleDTO>  getAll() {
+
+    return usersRoleMapper.map(usersRoleRepository.findAll());
+       
+     
+}
+ 
     // insert
 
     public void save(UserDTO userDTO) {
-       final User user = userMapper.map(userDTO);
-      userRepository.save(user);
-    }
+      final User user = userMapper.map(userDTO);
+      if(userRepository.existsByEmail(user.getEmail())){
+        throw new AlreadyExistException("Email already used");
+      }
+     userRepository.save(user);
+   }
 
 
     public UserDTO findUserById(int id){

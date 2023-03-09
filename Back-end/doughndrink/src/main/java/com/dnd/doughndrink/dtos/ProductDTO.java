@@ -1,10 +1,11 @@
 package com.dnd.doughndrink.dtos;
 
+
 import lombok.Data;
 
 @Data
 public class ProductDTO {
-    
+
     private Integer productId;
     private SubCategoryDTO subCategory;
     private String name;
@@ -24,6 +25,7 @@ public class ProductDTO {
     //     this.description = description;
     //     this.image=image;
     // }
+
     
     // private Set<OrderContainsProduct> orderContainsProducts = new HashSet<OrderContainsProduct>(0);
     // private Set<User> users = new HashSet<User>(0);

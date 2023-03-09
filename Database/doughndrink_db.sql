@@ -29,7 +29,8 @@ CREATE TABLE `category` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `category_id_UNIQUE` (`category_id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
+  UNIQUE KEY `name_UNIQUE` (`name`),
+  UNIQUE KEY `UK46ccwnsi9409t36lurvtyljak` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,10 +84,11 @@ CREATE TABLE `orders` (
   `shipping_date` datetime NOT NULL,
   `order_date` datetime NOT NULL,
   `user_id` int DEFAULT NULL,
+  `total_price` double NOT NULL,
   PRIMARY KEY (`order_id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FKel9kyl84ego2otj2accfd8mr7` (`user_id`),
+  CONSTRAINT `FKel9kyl84ego2otj2accfd8mr7` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +97,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'cash','2022-05-12 00:00:00','2022-05-12 00:00:00',2,33.95),(2,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,20.65),(3,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,0),(4,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,0),(5,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,50.65),(6,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,20.65),(7,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,50.65),(8,'cash','2023-02-22 00:00:00','2023-02-11 00:00:00',2,45.2),(9,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,750.65),(10,'visa','2023-02-22 00:00:00','2023-02-22 00:00:00',NULL,750.65);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,6 +120,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `product_id_UNIQUE` (`product_id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
+  UNIQUE KEY `UKjmivyxk9rmgysrmsqw15lqr5b` (`name`),
   KEY `sub_category_id` (`sub_category_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`sub_category_id`) REFERENCES `sub_category` (`sub_category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -144,7 +148,7 @@ CREATE TABLE `roles` (
   `role_name` varchar(45) NOT NULL,
   PRIMARY KEY (`role_id`),
   UNIQUE KEY `role_id_UNIQUE` (`role_id`),
-  UNIQUE KEY `role_name_UNIQUE` (`role_name`)
+  UNIQUE KEY `UK716hgxp60ym1lifrdgp67xt5k` (`role_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -171,6 +175,7 @@ CREATE TABLE `sub_category` (
   PRIMARY KEY (`sub_category_id`),
   UNIQUE KEY `sub_category_id_UNIQUE` (`sub_category_id`),
   UNIQUE KEY `sub_ctg_name_UNIQUE` (`sub_ctg_name`),
+  UNIQUE KEY `UKp0dc8l7ul0mxiik3c3rmwnc8` (`sub_ctg_name`),
   KEY `category_id` (`category_id`),
   CONSTRAINT `sub_category_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -194,18 +199,21 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `passward` varchar(15) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` varchar(300) NOT NULL,
+  `password` varchar(15) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `phone_UNIQUE` (`phone`),
+  UNIQUE KEY `UKob8kqyqqgmefl0aco34akdtpe` (`email`),
+  UNIQUE KEY `UK589idila9li6a4arw1t8ht1gx` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +222,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'mina','yousry','minayousry597@gmail.com','01234','012494','ksdfkk'),(2,'sohaila','barakat','sohaila@gmail.com','01235','0222335','dsfkldsjlj');
+INSERT INTO `user` VALUES (1,'mina','yousry','minayousry597@gmail.com','01234','012494','ksdfkk',''),(2,'sohaila','barakat','sohaila@gmail.com','01235','0222335','dsfkldsjlj','');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,10 +237,8 @@ CREATE TABLE `user_buy_product` (
   `user_id` int NOT NULL,
   `product_id` int NOT NULL,
   PRIMARY KEY (`user_id`,`product_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `user_buy_product_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `user_buy_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FKl000hxc66hjy6g7q3j7ab2lpw` (`product_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,8 +247,34 @@ CREATE TABLE `user_buy_product` (
 
 LOCK TABLES `user_buy_product` WRITE;
 /*!40000 ALTER TABLE `user_buy_product` DISABLE KEYS */;
-INSERT INTO `user_buy_product` VALUES (2,1),(1,2),(2,3),(1,4);
 /*!40000 ALTER TABLE `user_buy_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_controls_product`
+--
+
+DROP TABLE IF EXISTS `user_controls_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_controls_product` (
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  PRIMARY KEY (`user_id`,`product_id`),
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `user_controls_product_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `user_controls_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_controls_product`
+--
+
+LOCK TABLES `user_controls_product` WRITE;
+/*!40000 ALTER TABLE `user_controls_product` DISABLE KEYS */;
+INSERT INTO `user_controls_product` VALUES (2,1),(1,2),(2,3),(1,4);
+/*!40000 ALTER TABLE `user_controls_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -280,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-05 16:42:12
+-- Dump completed on 2023-03-08 10:08:08
