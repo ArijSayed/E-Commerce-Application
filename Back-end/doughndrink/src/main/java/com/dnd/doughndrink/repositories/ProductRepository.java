@@ -7,7 +7,8 @@ import com.dnd.doughndrink.models.Product;
 public interface ProductRepository extends JpaRepository<Product,Integer>{
 
         public List<Product> findAllBySubCategorySubCategoryId(int sub_category_id);
+
         
-        public List<Product> findAllByOrderContainsProductOrderContainsProductIdOrderId(int orderId);
+      //  public List<Product> findAllByOrderContainsProductOrderContainsProductIdOrderId(int orderId);
     
 }

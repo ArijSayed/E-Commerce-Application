@@ -24,12 +24,15 @@ import lombok.extern.slf4j.Slf4j;
 
 public class ProductService {
 
-    private final SubCategoryRepository subCategoryRepository;
+    // private final SubCategoryService subCategoryService;
+   // private final SubCategoryRepository subCategoryRepository;
     private final ProductRepository productRepository;
 
     
     @Autowired
     private final ProductMapper productMapper;
+   
+    // private final SubCategoryMapper subCategoryMapper;
     @Autowired
     private final SubCategoryMapper subCategoryMapper;
 
@@ -65,6 +68,17 @@ public class ProductService {
        List<Product> products= productRepository.findAllBySubCategorySubCategoryId(sub_category_id);
        return productMapper.map(products); 
     }
+
+    // public List<ProductDTO> findProductsBySubCategoryId(int sub_category_id){
+    //     SubCategoryDTO subCategoryDTO=subCategoryService.findSubCategoryById(sub_category_id);
+    //     SubCategory subCategory= subCategoryMapper.map(subCategoryDTO);
+    //     Set<Product> products = subCategory.getProducts();
+    //     return productMapper.map(products);
+    // }
+
+    public List<ProductDTO> getProductBySubCategoryId(int sub_category_id){
+       List<Product> products= productRepository.findAllBySubCategorySubCategoryId(sub_category_id);
+       return productMapper.map(products); 
 
     // public void addProduct(ProductDTO productDTO){
     //     SubCategory subCategory = subCategoryRepository.findById(subCategoryMapper.map(productDTO.getSubCategory()).getSubCategoryId() ).orElse(null);
