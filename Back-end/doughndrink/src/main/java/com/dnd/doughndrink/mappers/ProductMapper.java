@@ -1,7 +1,6 @@
 package com.dnd.doughndrink.mappers;
 
 import java.util.List;
-import java.util.Set;
 
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,5 @@ public interface ProductMapper {
     ProductDTO map(Product product);
 
     List<ProductDTO> map(List<Product> products);
-
-    List<ProductDTO> map(Set<Product> products);
     
 }

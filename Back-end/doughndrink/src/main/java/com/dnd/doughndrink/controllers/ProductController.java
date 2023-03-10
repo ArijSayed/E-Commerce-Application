@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.dnd.doughndrink.dtos.ProductDTO;
+import com.dnd.doughndrink.dtos.SubCategoryDTO;
 import com.dnd.doughndrink.services.ProductService;
 
 @RestController
@@ -38,16 +39,17 @@ public class ProductController {
 
     @PostMapping
     public void addProduct(@RequestBody ProductDTO productDTO ){
-        productService.saveProduct(productDTO);
+        productService.addProduct(productDTO);
     }
 
     @PutMapping
     public void updateProduct(@RequestBody ProductDTO productDTO){
-        productService.saveProduct(productDTO);
+        productService.addProduct(productDTO);
     }
 
     @GetMapping("/subcategory/{id}")
     public List<ProductDTO> getProductBySubCategoryId(@PathVariable("id") int sub_category_id){
        return productService.getProductBySubCategoryId(sub_category_id);
     }
+
 }
