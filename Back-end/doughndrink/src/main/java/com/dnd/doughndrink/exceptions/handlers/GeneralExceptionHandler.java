@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.dnd.doughndrink.dtos.ErrorResponse;
 import com.dnd.doughndrink.exceptions.AlreadyExistException;
+import com.dnd.doughndrink.exceptions.UserNotFoundException;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 
 @ControllerAdvice
@@ -22,6 +23,22 @@ public class GeneralExceptionHandler {
         errorResponse.setMessage(message);
         errorResponse.setStatus(HttpStatus.valueOf(409));
         errorResponse.setCode(409);
+        errorResponse.setLocation(req.getRequestURI().toString());
+        return new ResponseEntity<>(errorResponse,errorResponse.getStatus());
+
+    }
+
+
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex, HttpServletRequest req){
+        String message = String.format("%s", ex.getMessage());
+
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage(message);
+        errorResponse.setStatus(HttpStatus.valueOf(401));
+        errorResponse.setCode(401);
         errorResponse.setLocation(req.getRequestURI().toString());
         return new ResponseEntity<>(errorResponse,errorResponse.getStatus());
 
