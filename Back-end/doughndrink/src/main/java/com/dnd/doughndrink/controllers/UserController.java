@@ -24,15 +24,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(consumes = "application/json")
-    public void save(@RequestBody UserDTO userDTO){
-        System.out.println(userDTO.getAddress());
-        System.out.println(userDTO.getEmail());
-        System.out.println(userDTO.getFname());
-        System.out.println(userDTO.getLname());
-        System.out.println(userDTO.getPassword());
-        userService.save(userDTO);
-    }
+    // @PostMapping(consumes = "application/json")
+    // public void save(@RequestBody UserDTO userDTO){
+    //     System.out.println(userDTO.getAddress());
+    //     System.out.println(userDTO.getEmail());
+    //     System.out.println(userDTO.getFname());
+    //     System.out.println(userDTO.getLname());
+    //     System.out.println(userDTO.getPassword());
+    //     userService.save(userDTO);
+    // }
 
 
    @GetMapping
@@ -60,10 +60,10 @@ public class UserController {
    userService.deleteUserById(id);
 }
 
-@PutMapping
-   public void  update( @RequestBody UserDTO userDTO) {
+// @PutMapping
+//    public void  update( @RequestBody UserDTO userDTO) {
   
-    userService.save(userDTO);
-   }
+//     userService.save(userDTO);
+//    }
     
 }

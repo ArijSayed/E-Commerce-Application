@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `doughndrink` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `doughndrink`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: localhost    Database: doughndrink
@@ -149,7 +147,7 @@ CREATE TABLE `roles` (
   PRIMARY KEY (`role_id`),
   UNIQUE KEY `role_id_UNIQUE` (`role_id`),
   UNIQUE KEY `UK716hgxp60ym1lifrdgp67xt5k` (`role_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,6 +156,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (2,'ROLE_ADMIN'),(1,'ROLE_USER');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,21 +198,21 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` int NOT NULL,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `passward` varchar(15) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` varchar(300) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   UNIQUE KEY `UKob8kqyqqgmefl0aco34akdtpe` (`email`),
   UNIQUE KEY `UK589idila9li6a4arw1t8ht1gx` (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +221,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'mina','yousry','minayousry597@gmail.com','01234','012494','ksdfkk',''),(2,'sohaila','barakat','sohaila@gmail.com','01235','0222335','dsfkldsjlj','');
+INSERT INTO `user` VALUES (1,'mina','yousry','minayousry597@gmail.com','012494','ksdfkk','',NULL),(2,'sohaila','barakat','sohaila@gmail.com','0222335','dsfkldsjlj','',NULL),(4,'Sohaila','Barakat','sohailaaaA@gmail.com','012272777501','Cairo','$2a$10$4SmA9CIAa3aLTNqv0bZe4eMvNfIPQS.rJxKRLLr4larMvRivWuPG6',NULL),(14,'Sohaila','Barakat','sohailaaa5A@gmail.com','01227277g7501','Cairo','123','ROLE_USER'),(15,'Sohaila','Barakat','sohailaaaa5A@gmail.com','01227277327501','Cairo','$2a$10$YKfHu9us4qH1CvaWGdjMNuPpI.3GSOFOvvwz7J4vDE6zD3XSYNTT.','ROLE_USER'),(16,'Arij','Sayed','arij@gmail.com','87345197','cairo','$2a$10$YKfHu9us4qH1CvaWGdjMNuPpI.3GSOFOvvwz7J4vDE6zD3XSYNTT.','ROLE_ADMIN'),(17,'Sohaila','Barakat','sohailaaa88@gmail.com','387419468','Portsaid','$2a$10$BFlcWIusVqw6tanKY/v6oOpxLp.73jHiasJx/fh8lxfRXXIcnoBfC','ROLE_USER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,4 +311,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-08 10:08:08
+-- Dump completed on 2023-03-12  9:14:11

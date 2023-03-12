@@ -28,13 +28,18 @@ public class RoleService {
 
      //select
      public List<RoleDTO> findAll() {
-    
         return roleMapper.map(roleRepository.findAll());
     }
+
+
     public RoleDTO findRoleById(int id){
         final Optional<Roles> optionalRoles = roleRepository.findById(id);
         return roleMapper.map(optionalRoles.get());
       }
 
+
+    
+
+  
 
 }
