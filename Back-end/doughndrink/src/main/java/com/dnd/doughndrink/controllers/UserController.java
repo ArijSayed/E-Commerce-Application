@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dnd.doughndrink.dtos.UserDTO;
 import com.dnd.doughndrink.services.UserService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -44,6 +44,8 @@ public class UserController {
         return userService.findUserById(id);
     }
 
+    
+
     @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable("id") int id) {
    userService.deleteUserById(id);
@@ -53,5 +55,8 @@ public class UserController {
    public void  update( @RequestBody UserDTO userDTO) {
     userService.save(userDTO);
    }
+
+
+   
     
 }
