@@ -51,4 +51,5 @@ public class ProductController {
     public List<ProductDTO> getProductBySubCategoryId(@PathVariable("id") int sub_category_id){
        return productService.getProductBySubCategoryId(sub_category_id);
     }
+
 }

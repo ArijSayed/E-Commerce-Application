@@ -1,11 +1,7 @@
 package com.dnd.doughndrink.dtos;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-
-import com.dnd.doughndrink.models.Product;
 
 // import java.util.*; 
 
@@ -26,8 +22,10 @@ public class UserDTO {
      private String password;
      private String phone;
      private String address;
-    //  private Set<Roles> roleses = new HashSet<Roles>(0);
-     private Set<ProductDTO> products = new HashSet<ProductDTO>(0);
-    //  private Set<Orders> orderses = new HashSet<Orders>(0);
+    //  private Set<RoleDTO> roleses = new HashSet<RoleDTO>(0);
+   
+     //  private Set<ProductDTO> products = new HashSet<ProductDTO>(0);
+    //  private Map<Orders> orderses = new HashMap<Orders>(0);
     
 }
+
