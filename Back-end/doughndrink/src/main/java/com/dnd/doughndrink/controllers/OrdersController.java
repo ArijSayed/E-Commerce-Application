@@ -26,8 +26,8 @@ public class OrdersController {
         System.out.println(ordersDTO.getPaymentType());
         System.out.println(ordersDTO.getShippingDate());
         System.out.println(ordersDTO.getOrderDate());
-        System.out.println(ordersDTO.getUserId());
-        System.out.println(ordersDTO.getTotaPrice());
+        System.out.println(ordersDTO.getUser());
+        System.out.println(ordersDTO.getTotalPrice());
         OrdersService.save(ordersDTO);
     }
 
@@ -51,4 +51,10 @@ public class OrdersController {
    public void  update( @RequestBody OrdersDTO ordersDTO) {
     OrdersService.save(ordersDTO);
    }
+
+   @GetMapping("/user/{id}")
+       public List<OrdersDTO> getOrdersbyUserId(@PathVariable("id") int userId){
+          return OrdersService.getOrdersbyUserId(userId);
+       }
+
 }
