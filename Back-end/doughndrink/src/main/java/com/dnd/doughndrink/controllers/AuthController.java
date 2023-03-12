@@ -9,10 +9,12 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dnd.doughndrink.dtos.ResponseHandler;
 import com.dnd.doughndrink.dtos.UserDTO;
 import com.dnd.doughndrink.exceptions.UserNotFoundException;
 // import com.dnd.doughndrink.models.ERole;
@@ -62,16 +65,14 @@ public class AuthController {
   JwtUtils jwtUtils;
 
   @PostMapping("/signin")
-  public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+  public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-    Authentication authentication = authenticationManager.authenticate(
+ 
+    try{
+      Authentication authentication = authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
-    if(!authentication.isAuthenticated()){
-        throw new UserNotFoundException("Email or password not found");
-    }
-          
-    SecurityContextHolder.getContext().setAuthentication(authentication);
+      SecurityContextHolder.getContext().setAuthentication(authentication);
     String jwt = jwtUtils.generateJwtToken(authentication);
     
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();    
@@ -79,11 +80,19 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    return ResponseEntity.ok(new JwtResponse(jwt, 
-                         userDetails.getId(), 
-                         userDetails.getUsername(), 
-                
-                         roles));
+        return ResponseHandler.generateResponse("logged in successfully",HttpStatus.valueOf(200),new JwtResponse(jwt, 
+        userDetails.getId(), 
+        userDetails.getUsername(), 
+    
+        roles));
+    }      catch(AuthenticationException e){
+      throw new UserNotFoundException("Email or password not found");
+
+    }
+    
+
+    
+  
      
       
     
