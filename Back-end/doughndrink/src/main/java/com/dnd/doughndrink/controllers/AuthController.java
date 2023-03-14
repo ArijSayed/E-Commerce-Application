@@ -44,6 +44,7 @@ import com.dnd.doughndrink.services.UserService;
 // @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:4200/") 
 public class AuthController {
 
   @Autowired
@@ -81,12 +82,10 @@ public class AuthController {
         .collect(Collectors.toList());
 
         return ResponseHandler.generateResponse("logged in successfully",HttpStatus.valueOf(200),new JwtResponse(jwt, 
-        userDetails.getId(), 
-        userDetails.getUsername(), 
-    
-        roles));
+        userDetails.getId()
+        ),true);
     }      catch(AuthenticationException e){
-      throw new UserNotFoundException("Email or password not found");
+      throw new UserNotFoundException("Email or password is invalid");
 
     }
     
