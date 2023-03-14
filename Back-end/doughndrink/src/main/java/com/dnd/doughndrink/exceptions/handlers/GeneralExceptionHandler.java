@@ -18,7 +18,7 @@ public class GeneralExceptionHandler {
     @ExceptionHandler(AlreadyExistException.class)
     public ResponseEntity<Object> handleAlreadyExistException(AlreadyExistException ex, HttpServletRequest req){
         String message = String.format("%s", ex.getMessage());
-        return ResponseHandler.generateResponse(message, HttpStatus.valueOf(409), 409);
+        return ResponseHandler.generateResponse(message, HttpStatus.valueOf(200), 409,false);
 
     }
 
@@ -27,7 +27,7 @@ public class GeneralExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex, HttpServletRequest req){
         String message = String.format("%s", ex.getMessage());
-        return ResponseHandler.generateResponse(message, HttpStatus.valueOf(401), 401);
+        return ResponseHandler.generateResponse(message, HttpStatus.valueOf(200), 401,false);
 
     }
 }
