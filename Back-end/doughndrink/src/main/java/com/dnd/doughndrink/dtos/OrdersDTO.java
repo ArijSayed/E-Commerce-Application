@@ -9,6 +9,6 @@ public class OrdersDTO {
     private String paymentType;
     private Date shippingDate;
     private Date orderDate;
-    private Double totaPrice;
-    private int userId;
+    private Double totalPrice;
+    private UserDTO user;
 }
