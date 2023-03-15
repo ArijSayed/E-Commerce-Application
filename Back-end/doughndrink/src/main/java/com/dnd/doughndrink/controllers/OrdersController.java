@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dnd.doughndrink.dtos.OrdersDTO;
+import com.dnd.doughndrink.models.Orders;
 import com.dnd.doughndrink.services.OrdersService;
 
 @RestController
@@ -20,6 +21,10 @@ import com.dnd.doughndrink.services.OrdersService;
 public class OrdersController {
     @Autowired
     private OrdersService OrdersService;
+    // @Autowired(required = true)
+    // private Orders orders;
+    private OrdersDTO ordersDTO;
+
 
     @PostMapping(consumes = "application/json")
     public void save(@RequestBody OrdersDTO ordersDTO){
@@ -27,18 +32,22 @@ public class OrdersController {
         System.out.println(ordersDTO.getShippingDate());
         System.out.println(ordersDTO.getOrderDate());
         System.out.println(ordersDTO.getUser());
-        System.out.println(ordersDTO.getTotalPrice());
+        System.out.println(OrdersService.totalPrice());
         OrdersService.save(ordersDTO);
     }
 
 
    @GetMapping
     public List<OrdersDTO> findAll(){
+        double total = OrdersService.totalPrice();
+        ordersDTO.setTotalPrice(total);
         return OrdersService.findAll();
     }
 
     @GetMapping("/{orderId}")
     public OrdersDTO findOrdersById(@PathVariable int orderId){
+        double total = OrdersService.totalPrice();
+        ordersDTO.setTotalPrice(total);
         return OrdersService.findOrdersById(orderId);
     }
 
