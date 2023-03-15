@@ -1,0 +1,65 @@
+<section class="h-100 " style="background-color: #F9F1F1;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="assets/images/pic1.jpg"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-xl-6" >
+                <div class="card-body p-md-5 text-black" [formGroup]="RegistrationForm">
+                  <h3 class="mb-5 text-uppercase">Registration form</h3>
+  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" formControlName="fName" [class.is-valid]="RegistrationForm.controls['fName'].errors" [class.is-invalid]="RegistrationForm.controls['fName'].errors" id="form3Example1m" #inputFName class="form-control form-control-lg" placeholder="First name" required/>
+                        <label class="form-label" for="form3Example1m">First name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" formControlName="lName" [class.is-valid]="RegistrationForm.controls['lName'].errors" [class.is-invalid]="RegistrationForm.controls['lName'].errors" id="form3Example1n" #inputLName class="form-control form-control-lg" placeholder="Last name" required/>
+                        <label class="form-label" for="form3Example1n">Last name</label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="text" formControlName="email" [class.is-valid]="RegistrationForm.controls['email'].errors" [class.is-invalid]="RegistrationForm.controls['email'].errors" id="form3Example97" #inputEmail class="form-control form-control-lg" placeholder="doughndrink@gmail.com" required/>
+                    <label class="form-label" for="form3Example97">Email </label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" formControlName="address" [class.is-valid]="RegistrationForm.controls['address'].errors" [class.is-invalid]="RegistrationForm.controls['address'].errors" id="form3Example8" #inputAddress class="form-control form-control-lg" placeholder="Address" required/>
+                    <label class="form-label" for="form3Example8">Address</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="tel" formControlName="phone" [class.is-valid]="RegistrationForm.controls['phone'].errors" [class.is-invalid]="RegistrationForm.controls['phone'].errors" id="form3Example9" #inputPhone class="form-control form-control-lg" placeholder="(+02)01123456789" required/>
+                    <label class="form-label" for="form3Example9">Phone</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <input type="password" formControlName="password" [class.is-valid]="RegistrationForm.controls['password']" [class.is-invalid]="RegistrationForm.controls['password'].errors" id="form3Example90" #inputPassword class="form-control form-control-lg" placeholder="password" required/>
+                    <label class="form-label" for="form3Example90">password</label>
+                  </div>
+                 
+  
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="button" (click)="inputFName.value='';inputLName.value='';inputEmail.value='';inputAddress.value='';inputPhone.value='';inputPassword.value=''" class="btn btn-light btn-lg">Reset all</button>
+                    <button type="button" [disabled]="RegistrationForm.invalid" style="background-color: red;" class="btn btn-warning btn-lg ms-2"
+                    (click)="add(inputFName.value,inputLName.value,inputEmail.value,inputAddress.value,inputPhone.value,inputPassword.value)"><a style="text-decoration: none;" routerLink="/login">Submit </a></button>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
