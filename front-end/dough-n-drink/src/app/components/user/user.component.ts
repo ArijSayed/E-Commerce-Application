@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
     user.address=address;
     user.phone=phone;
     user.password=password;
-    this._http.post<ResponseViewModel>('http://localhost:8080/users/post',user)
+    this._http.post<ResponseViewModel>('http://localhost:8080/api/auth/signup',user)
     .subscribe(
       response=>{
         if(response.success){

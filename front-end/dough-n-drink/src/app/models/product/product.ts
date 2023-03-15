@@ -9,7 +9,7 @@ export class Product{
   stock: string;
   description:string;
   image:string;
-
+  quantity!:any
 
   constructor(subCategory:SubCategory,name:string,size:string,
     price:number,stock: string,description:string,image:string){
