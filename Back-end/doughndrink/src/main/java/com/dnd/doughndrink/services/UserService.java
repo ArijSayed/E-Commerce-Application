@@ -90,10 +90,18 @@ public class UserService {
       return userMapper.map(optionalUser.get());
     }
 
+    public UserDTO findUserByEmail(String email){
+      final Optional<User> optionalUser = userRepository.findByEmail(email);
+      return userMapper.map(optionalUser.get());
+    }
+
     
     public void deleteUserById(int id){
        userRepository.deleteById(id);    
     }
+
+
+  
 
     // update
     //delete 

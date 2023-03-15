@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dnd.doughndrink.dtos.ResponseHandler;
@@ -47,6 +48,8 @@ public class UserController {
         return ResponseHandler.generateResponse("found user", HttpStatus.valueOf(200), user, true);
     }
 
+    
+
     @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable("id") int id) {
    userService.deleteUserById(id);
@@ -54,8 +57,12 @@ public class UserController {
 
 // @PutMapping
 //    public void  update( @RequestBody UserDTO userDTO) {
-  
-//     userService.save(userDTO);
-//    }
+
+    userService.save(userDTO);
+   }
+
+
+   
+
     
 }
