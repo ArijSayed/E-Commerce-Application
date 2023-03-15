@@ -1,6 +1,9 @@
 package com.dnd.doughndrink.dtos;
 
 import java.util.Date;
+import java.util.Set;
+
+import com.dnd.doughndrink.models.OrderContainsProduct;
 
 import lombok.Data;
 @Data
@@ -9,6 +12,7 @@ public class OrdersDTO {
     private String paymentType;
     private Date shippingDate;
     private Date orderDate;
-    private Double totaPrice;
-    private int userId;
+    private Double totalPrice;
+    private UserDTO user;
+    private Set<OrderContainsProductDTO> orderContainsProducts;
 }

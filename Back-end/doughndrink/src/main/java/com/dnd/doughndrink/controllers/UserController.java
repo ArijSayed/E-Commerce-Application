@@ -4,35 +4,27 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dnd.doughndrink.dtos.ResponseHandler;
 import com.dnd.doughndrink.dtos.UserDTO;
 import com.dnd.doughndrink.dtos.UsersRoleDTO;
 import com.dnd.doughndrink.services.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:4200/") 
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @PostMapping(consumes = "application/json")
-    public void save(@RequestBody UserDTO userDTO){
-        System.out.println(userDTO.getAddress());
-        System.out.println(userDTO.getEmail());
-        System.out.println(userDTO.getFname());
-        System.out.println(userDTO.getLname());
-        System.out.println(userDTO.getPassword());
-        userService.save(userDTO);
-    }
 
 
    @GetMapping
@@ -51,8 +43,9 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public UserDTO findUserById(@PathVariable int id){
-        return userService.findUserById(id);
+    public ResponseEntity<Object> findUserById(@PathVariable int id){
+        UserDTO user = userService.findUserById(id);
+        return ResponseHandler.generateResponse("found user", HttpStatus.valueOf(200), user, true);
     }
 
     
@@ -62,13 +55,14 @@ public class UserController {
    userService.deleteUserById(id);
 }
 
-@PutMapping
-   public void  update( @RequestBody UserDTO userDTO) {
-  
+// @PutMapping
+//    public void  update( @RequestBody UserDTO userDTO) {
+
     userService.save(userDTO);
    }
 
 
    
+
     
 }

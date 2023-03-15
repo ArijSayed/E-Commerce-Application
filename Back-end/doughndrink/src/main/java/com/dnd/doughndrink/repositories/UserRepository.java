@@ -8,4 +8,6 @@ import com.dnd.doughndrink.models.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     Boolean existsByEmail(String email);
+
+    Optional<User> findByEmail(String email);
 }
