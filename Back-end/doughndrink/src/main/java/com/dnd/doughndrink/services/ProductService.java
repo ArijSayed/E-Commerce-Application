@@ -44,13 +44,27 @@ public class ProductService {
         return productMapper.map(optionalProduct.get());
     }
 
+    public ProductDTO findProductByName(String product_name){
+        
+        Optional<Product> optionalProduct = productRepository.findByName(product_name);
+        return productMapper.map(optionalProduct.get());
+    }
+
+
+
+
     public List<ProductDTO> findAllProducts(){
        List<Product> products= productRepository.findAll();
        return productMapper.map(products);
     }
 
-    public void deletProduct(int product_id){
-        productRepository.deleteById(product_id);
+    // public void deletProduct(int product_id){
+    //     productRepository.deleteById(product_id);
+    // }
+
+
+    public void deleteProduct(String name){
+        productRepository.deleteByName(name);
     }
 
     // public void saveProduct(ProductDTO productDTO){
@@ -89,7 +103,7 @@ public class ProductService {
     // }
 
     public void addProduct(ProductDTO productDTO){
-        SubCategory subCategory = subCategoryRepository.findById(subCategoryMapper.map(productDTO.getSubCategory()).getSubCategoryId() ).orElse(null);
+        SubCategory subCategory = subCategoryRepository.findBySubCtgName(subCategoryMapper.map(productDTO.getSubCategory()).getSubCtgName() ).orElse(null);
         if(null ==  subCategory){
             subCategory = new SubCategory();
         }

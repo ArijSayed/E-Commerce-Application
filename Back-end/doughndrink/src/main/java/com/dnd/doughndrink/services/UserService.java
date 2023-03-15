@@ -91,6 +91,8 @@ public class UserService {
     }
 
     
+
+    
     public void deleteUserById(int id){
        userRepository.deleteById(id);    
     }

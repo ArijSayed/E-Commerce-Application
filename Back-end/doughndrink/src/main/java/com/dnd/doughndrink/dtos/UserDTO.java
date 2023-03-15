@@ -25,6 +25,7 @@ public class UserDTO {
      private String email;
      private String phone;
      private String address;
+     private String role;
     //  private String role= "ROLE_USER";
     //  private Set<RoleDTO> roleses = new HashSet<RoleDTO>(){{
     //     add(role);

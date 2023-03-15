@@ -38,9 +38,20 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Object> findProductByName(@PathVariable("name") String product_name){
+        try{
+            ProductDTO result=productService.findProductByName(product_name);
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, result,true);
+        }catch(Exception e){
+            return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS, null,false);
+        }
+    }
+
+
     @GetMapping
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> findAllProducts(){
         try{
             List<ProductDTO> result=productService.findAllProducts();
@@ -50,11 +61,11 @@ public class ProductController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deletProduct(@PathVariable("id") int product_id){
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("name") String product_name){
         try{
-            productService.deletProduct(product_id);
-            return ResponseHandler.generateResponse("Deleted!",HttpStatus.OK,null,true);
+            productService.deleteProduct(product_name);
+            return ResponseHandler.generateResponse("Successfully deleted product",HttpStatus.OK,null,true);
         }catch(Exception e){
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS,null,false);
         }
@@ -64,7 +75,7 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestBody ProductDTO productDTO ){
         try{
         productService.addProduct(productDTO);
-        return ResponseHandler.generateResponse("Successfully added data",HttpStatus.OK,null,true);
+        return ResponseHandler.generateResponse("Successfully added product",HttpStatus.OK,null,true);
         }catch(Exception e){
             return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null,false);
         }
@@ -75,7 +86,7 @@ public class ProductController {
     public ResponseEntity<Object> updateProduct(@RequestBody ProductDTO productDTO){
         try{
             productService.addProduct(productDTO);
-            return ResponseHandler.generateResponse("Updated", HttpStatus.OK, null,true);
+            return ResponseHandler.generateResponse("Product Modified Successfully", HttpStatus.OK, null,true);
         }catch(Exception e){
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null,false);
         }

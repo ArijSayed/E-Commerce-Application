@@ -3,6 +3,7 @@ package com.dnd.doughndrink.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.dnd.doughndrink.services.SubCategoryService;
 
 @RestController
 @RequestMapping("/category")
+@CrossOrigin(origins = "http://localhost:4200/") 
 public class SubCategoryController {
     @Autowired
     private SubCategoryService subCategoryService;
@@ -35,6 +37,12 @@ public class SubCategoryController {
     @GetMapping("/{id}")
     public SubCategoryDTO findSubCategoryById(@PathVariable int id) {
         return subCategoryService.findSubCategoryById(id);
+    }
+
+
+    @GetMapping("/{name}")
+    public SubCategoryDTO findSubCategoryById(@PathVariable String name) {
+        return subCategoryService.findSubCtegoryByName(name);
     }
 
     @PutMapping
