@@ -4,6 +4,8 @@ export class User{
     lname:string='';
     email:string='';
     role:string;
-    
+    phone : string;
+    address : string;
+    password : string;
     
 }
