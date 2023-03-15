@@ -14,5 +14,4 @@ public class OrdersDTO {
     private Date orderDate;
     private Double totalPrice;
     private UserDTO user;
-    private Set<OrderContainsProductDTO> orderContainsProducts;
 }
