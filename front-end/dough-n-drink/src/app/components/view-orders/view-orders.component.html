@@ -1,0 +1,33 @@
+<h1>Orders</h1>
+<table class="table table-hover">
+    <thead class="table-light">
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">ID</th>
+        <th scope="col">payment type</th>
+        <th scope="col">shipping date</th>
+        <th scope="col">order date</th>
+        <th scope="col">total price</th>
+        <th scope="col">user name</th>
+        <th scope="col">email</th>
+        <th scope="col">phone</th>
+        <th scope="col">address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orders; let currentIndex = index">
+        <!-- <th scope="row">{{ currentIndex + 1 }}</th> -->
+        <td>{{ item.orderId }}</td>
+        <td>{{ item.paymentType }}</td>
+        <td>{{ item.shippingDate}}</td>
+        <td>{{ item.orderDate }}</td>
+        <td>{{ item.totalPrice}}</td>
+        <td>{{ item.user.fname}}</td>
+        <td>{{ item.user.email }}</td>
+        <td>{{ item.user.phone }}</td>
+        <td>{{ item.user.address }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  
