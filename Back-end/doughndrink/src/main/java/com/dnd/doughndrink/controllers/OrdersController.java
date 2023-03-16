@@ -32,22 +32,22 @@ public class OrdersController {
         System.out.println(ordersDTO.getShippingDate());
         System.out.println(ordersDTO.getOrderDate());
         System.out.println(ordersDTO.getUser());
-        System.out.println(OrdersService.totalPrice());
+        System.out.println(ordersDTO.getTotalPrice());
         OrdersService.save(ordersDTO);
     }
 
 
    @GetMapping
     public List<OrdersDTO> findAll(){
-        double total = OrdersService.totalPrice();
-        ordersDTO.setTotalPrice(total);
+        // double total = OrdersService.totalPrice();
+        // ordersDTO.setTotalPrice(total);
         return OrdersService.findAll();
     }
 
     @GetMapping("/{orderId}")
     public OrdersDTO findOrdersById(@PathVariable int orderId){
-        double total = OrdersService.totalPrice();
-        ordersDTO.setTotalPrice(total);
+        // double total = OrdersService.totalPrice();
+        // ordersDTO.setTotalPrice(total);
         return OrdersService.findOrdersById(orderId);
     }
 
