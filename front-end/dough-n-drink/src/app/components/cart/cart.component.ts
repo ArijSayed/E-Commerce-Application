@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product/product';
 import { ProductService } from 'src/app/services/product.service';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { order } from 'src/app/models/order/order';
+import { OrderService } from 'src/app/services/OrderService';
 
 @Component({
   selector: 'app-cart',
@@ -16,26 +19,18 @@ export class CartComponent implements OnInit {
   quantity: any = 1;
   totalnship: any = 0
   auth_token!: any
+  _router: Router;
+  p: any
 
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, _router: Router, private order: OrderService) { }
 
   ngOnInit(): void {
-    this.auth_token = localStorage.getItem("token");
-    this.productService.getProductById(1, this.getHeader(this.auth_token)
-    ).subscribe(response => {
-      this.product = response;
-      this.products.push(this.product);
 
-      console.log(this.product);
-    })
-    this.productService.getProductById(2, this.getHeader(this.auth_token)
-    ).subscribe(response => {
-      this.product = response;
-      this.products.push(this.product);
+    this.p = localStorage.getItem("product");
+    this.products = JSON.parse(this.p);
 
-      console.log(this.product);
-      this.getCartTotal();
-    })
+
+    //this.getCartTotal();
 
 
   }
@@ -43,7 +38,7 @@ export class CartComponent implements OnInit {
   getCartTotal(): any {
     this.total = 0;
     for (let x in this.products) {
-      this.total += this.products[x].price //+ this.products[x].quantity
+      this.total += this.products[x].price * this.products[x].quantity
       console.log(this.total);
       if (this.total != 0) {
         this.totalnship = this.total + 10;
@@ -75,24 +70,21 @@ export class CartComponent implements OnInit {
     this.products.splice(index, 1)
     this.getCartTotal()
 
+    localStorage.setItem("product", JSON.stringify(this.products));
+
   }
 
   clearCart() {
     this.products = []
     this.getCartTotal()
+    localStorage.setItem("product", JSON.stringify(this.products));
+
   }
+
 
   placeOrder() {
-
+    this.order.placeOrder(this.products, this.total, this.getHeader(this.auth_token))
   }
-  //  getCartProducts()
-  //  {
-  //    if("cart" in localStorage)
-  //    {
-  //     this.getCartProducts=JSON.parse(localStorage.getItem("cart")!)
-  //    }
-  //    console.log(this.getCartProducts)
-  //  }
 
 
   getHeader(token: string): any {
