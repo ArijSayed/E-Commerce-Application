@@ -28,7 +28,7 @@ public class Product  implements java.io.Serializable {
      private float price;
      private String stock;
      private String description;
-     private String image;
+     private byte[] image;
      private Set<OrderContainsProduct> orderContainsProducts = new HashSet<OrderContainsProduct>(0);
      @JsonBackReference
      private Set<User> users = new HashSet<User>(0);
@@ -44,7 +44,7 @@ public class Product  implements java.io.Serializable {
         this.stock = stock;
         this.description = description;
     }
-    public Product(SubCategory subCategory, String name, String size, float price, String stock, String description, String image, Set<OrderContainsProduct> orderContainsProducts, Set<User> users) {
+    public Product(SubCategory subCategory, String name, String size, float price, String stock, String description, byte[] image, Set<OrderContainsProduct> orderContainsProducts, Set<User> users) {
        this.subCategory = subCategory;
        this.name = name;
        this.size = size;
@@ -130,11 +130,11 @@ public class Product  implements java.io.Serializable {
 
     
     @Column(name="image")
-    public String getImage() {
+    public byte[] getImage() {
         return this.image;
     }
     
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
