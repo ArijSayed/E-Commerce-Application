@@ -17,8 +17,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserComponent } from './components/user/user.component';
-
-import { Ng2SearchPipe } from 'ng2-search-filter';
 import { SearchPipe } from './search.pipe';
 
 
