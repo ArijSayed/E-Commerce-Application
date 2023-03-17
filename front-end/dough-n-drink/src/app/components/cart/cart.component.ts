@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
     this.products = JSON.parse(this.p);
 
 
-    //this.getCartTotal();
+    this.getCartTotal();
 
 
   }
@@ -83,6 +83,7 @@ export class CartComponent implements OnInit {
 
 
   placeOrder() {
+    alert("Order is added")
     this.order.placeOrder(this.products, this.total, this.getHeader(this.auth_token))
   }
 

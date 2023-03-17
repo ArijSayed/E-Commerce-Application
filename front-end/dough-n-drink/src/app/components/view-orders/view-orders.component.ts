@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Order } from 'src/app/models/order/order';
+import { Order } from 'src/app/models/orders/Order';
+// import { Order } from 'src/app/models/order/order';
 import { OrderService } from 'src/app/services/OrderService';
 
 @Component({

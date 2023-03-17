@@ -17,7 +17,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './drinks.component.html',
   styleUrls: ['./drinks.component.css']
 })
-export class DrinksComponent implements OnInit{
+export class DrinksComponent  implements OnInit{
   searchText:any;
   product:any; 
  
@@ -45,8 +45,16 @@ ngOnInit()  {
   var userObject= localStorage.getItem("currentUser");
   this.currentUser = JSON.parse(userObject!);
   console.log(this.currentUser);
+   
   
- 
+
+  this._userService.logged
+  .subscribe(
+    status =>{
+      this.isLogged =status;
+    }
+  );
+
   this.auth_token=localStorage.getItem("token");
         
   this._productService.getProducts(this.getHeader(this.auth_token)).subscribe(response=>{
@@ -100,9 +108,18 @@ private getProducts(header:any):Observable<Product[]>{
 }
 
 
+search:any;
+  searchbygetProductsname(  name:string ):any{
+  
+this.search = this._http.get<Product[]>(`http://localhost:8080/product/${name}` );
+if(this.search==this.products){
+return this.search
+}
+return null;
+}  
+
 
  
-
 getHeader(token:string):any{
   return new HttpHeaders({
     'Content-Type': 'application/json',

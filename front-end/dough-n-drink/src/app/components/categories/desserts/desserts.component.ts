@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './desserts.component.html',
   styleUrls: ['./desserts.component.css']
 })
-export class DessertsComponent implements OnInit{
+export class DessertsComponent  implements OnInit{
   searchText:any;
   product:any; 
  
@@ -106,6 +106,16 @@ private getProducts(header:any):Observable<Product[]>{
   return this._http.get<Product[]>('http://localhost:8080/product',{ headers:header });
 }
 
+
+search:any;
+  searchbygetProductsname(  name:string ):any{
+  
+this.search = this._http.get<Product[]>(`http://localhost:8080/product/${name}` );
+if(this.search==this.products){
+return this.search
+}
+return null;
+}  
 
 
 adminButtonsStatus(){

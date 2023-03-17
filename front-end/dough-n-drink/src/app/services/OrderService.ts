@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { order } from '../models/order/order';
 import { orderdetails } from '../models/order/orderdetails';
+import { Order } from '../models/orders/Order';
 import { Product } from '../models/product/product';
 import { ResponseViewModel } from '../models/response-view-model';
 import { User } from '../models/user';
@@ -48,5 +49,8 @@ export class OrderService {
         }
     }
 
+    getAllOrders(header:any):  Observable<Order[]>{
+        return this._http.get<Order[]>(`http://localhost:8080/orders`,{ headers:header });
+    }
 
 }
