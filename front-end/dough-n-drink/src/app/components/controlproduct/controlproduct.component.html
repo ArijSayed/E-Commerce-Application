@@ -1,169 +1,75 @@
 <div class="container mt-5 mb-5 d-flex justify-content-center">
     <div class="card px-1 py-4">
         <div class="card-body">
-            <h6 class="card-title mb-3">Update products here</h6>
-            <div class="d-flex flex-row"> 
-                <label class="radio mr-1"> 
-                    <input type="radio" (click)="changeAddStatus()" name="add" value="anz" checked>
-                    <span> <i class="fa fa-user"></i> Add </span> 
-                </label> 
-                <label class="radio"> 
-                    <input type="radio" (click)="changeEditStatus()" name="add" value="add">
-                    <span> <i class="fa fa-plus-circle"></i> Edit </span>
-                </label> 
-                <label class="radio"> 
-                    <input type="radio" (click)="changeDeleteStatus()" name="add" value="add">
-                    <span> <i class="fa fa-plus-circle"></i> Delete </span>
-                </label> 
-            </div>
-            <div *ngIf="addVisible">
-            <h6 class="information mt-4">Enter new product data</h6>
-           
+            
+         
+         
+            <h4 class="information mt-4">Enter new product data</h4>
             <div [formGroup]="addForm">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                           <input formControlName="subCtgName" class="form-control" type="text" placeholder="subCategory">
-                           <div class="text-danger" *ngIf="(addForm.controls['subCtgName'].errors&&visible)">
-                            <small id="passwordHelp" class="form-text text-danger">Required password</small>
-                      </div>
-                         </div>
-                    </div>
+            <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">subCtgName</label>
+                <input formControlName="subCtgName" type="subCtgName" id="form2Example17" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['subCtgName'].errors)&&visible ">
+                      <small id="subCtgNameHelp" class="form-text text-danger">Required subCtgName</small>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                           <input formControlName="name" class="form-control" type="text" placeholder="name"> </div>
-                    </div>
+                
+              </div>
+
+              <div class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example27">name</label>
+                <input formControlName="name" type="text" id="form2Example27" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['name'].errors&&visible)">
+                  <small id="nameHelp" class="form-text text-danger">Required name</small>
+            </div>
+              </div>
+
+              <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">size</label>
+                <input formControlName="size" type="text" id="form2Example17" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['size'].errors)&&visible ">
+                      <small id="sizeHelp" class="form-text text-danger">Required size</small>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                           <input formControlName="size" class="form-control" type="text" placeholder="size"> </div>
-                    </div>
+                
+              </div>
+              <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">price</label>
+                <input formControlName="price" type="text" id="form2Example17" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['price'].errors)&&visible ">
+                      <small id="priceHelp" class="form-text text-danger">Required price</small>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group"> 
-                                <input formControlName="price" class="form-control" type="text" placeholder="price"> 
-                            </div>
-                        </div>
-                    </div>
+                
+              </div>
+              <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">stock</label>
+                <input formControlName="stock" type="text" id="form2Example17" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['stock'].errors)&&visible ">
+                      <small id="emailHelp" class="form-text text-danger">Required stock</small>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                 <input formControlName="stock" class="form-control" type="text" placeholder="stock"> 
-                            </div>
-                        </div>
-                    </div>
+                
+              </div>
+              <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">description</label>
+                <input formControlName="description" type="text" id="form2Example17" class="form-control form-control-lg" />
+                <div class="text-danger" *ngIf="(addForm.controls['description'].errors)&&visible ">
+                      <small id="descriptionHelp" class="form-text text-danger">Required description</small>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                 <input formControlName="description" class="form-control" type="text" placeholder="description">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                 <input formControlName="image" class="form-control" type="text" placeholder="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+              </div>
+
+              <div  class="form-group form-outline mb-4">
+                <label class="form-label" for="form2Example17">image</label>
+                <input formControlName="image" type="text" id="form2Example17" class="form-control form-control-lg" />
+                
+                
+              </div>
+
                 <br>
                   <button class="btn btn-primary btn-block confirm-button" (click)="addProduct()">Add</button>
             </div>
             </div>
 
-            <div *ngIf="editVisible">
-                <h6 class="information mt-4">Enter product you want to edit</h6>
-               
-                <div [formGroup]="editForm">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                               <input formControlName="subCtgName" class="form-control" type="text" placeholder="subCategory"> </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                               <input formControlName="name" class="form-control" type="text" placeholder="name"> </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                               <input formControlName="size" class="form-control" type="text" placeholder="size"> </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="input-group"> 
-                                    <input formControlName="price" class="form-control" type="text" placeholder="price"> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                     <input formControlName="stock" class="form-control" type="text" placeholder="stock"> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                     <input formControlName="description" class="form-control" type="text" placeholder="description">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                     <input formControlName="image" class="form-control" type="text" placeholder="image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                      <button class="btn btn-primary btn-block confirm-button" >Edit</button>
-                </div>
-                </div>
-                <div *ngIf="deleteVisible">
-                    <h6 class="information mt-4">Enter product you want to delete</h6>
-                   
-                    <div [formGroup]="deleteForm">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                   <input formControlName="name" class="form-control" type="text" placeholder="product name"> </div>
-                            </div>
-                        </div>
-                        
-                        <br>
-                          <button class="btn btn-primary btn-block confirm-button" (click)="deleteProduct()">Delete</button>
-                    </div>
-                    </div>
-        </div>
-        
-
+            
         
     </div>
-</div>
+
 <router-outlet></router-outlet>

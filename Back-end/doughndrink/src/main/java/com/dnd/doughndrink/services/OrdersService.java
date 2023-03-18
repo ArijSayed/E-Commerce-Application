@@ -75,12 +75,12 @@ public class OrdersService {
     //       return totalPrice;
     //      }
 
-         public double totalPrice(){       
-          double totalPrice = 0D;
-          Set<OrderContainsProductDTO> orderContainsProducts = ordersDTO.getOrderContainsProducts();
-          for (OrderContainsProductDTO op : orderContainsProducts){
-              totalPrice += (op.getProduct().getPrice()*op.getQuntity());
-          }
-          return totalPrice;
-         }
+        //  public double totalPrice(){       
+        //   double totalPrice = 0D;
+        //   Set<OrderContainsProductDTO> orderContainsProducts = ordersDTO.getOrderContainsProducts();
+        //   for (OrderContainsProductDTO op : orderContainsProducts){
+        //       totalPrice += (op.getProduct().getPrice()*op.getQuntity());
+        //   }
+        //   return totalPrice;
+        //  }
 }

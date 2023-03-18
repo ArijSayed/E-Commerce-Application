@@ -18,7 +18,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserComponent } from './components/user/user.component';
 
-
+import { SearchPipe } from './search.pipe';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 
 
@@ -40,7 +41,9 @@ import { UserComponent } from './components/user/user.component';
     DessertsComponent,
     CartComponent,
     BodyComponent,
-    UserComponent
+    UserComponent,
+    SearchPipe,
+    ViewOrdersComponent
 
 
 

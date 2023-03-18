@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit{
                 this._sharedUserData.setData(response.data);
                 this.currentUser = response.data;
                 this._userService.addCurrentUser(this.currentUser);
-                this._router.navigateByUrl('/home');
+                this._router.navigateByUrl('/body');
                 
               }else{
                 alert("something went wrong");
