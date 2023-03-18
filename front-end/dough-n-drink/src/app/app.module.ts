@@ -18,7 +18,10 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserComponent } from './components/user/user.component';
 
-
+import { SearchPipe } from './search.pipe';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter/src/ng2-filter.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -40,7 +43,9 @@ import { UserComponent } from './components/user/user.component';
     DessertsComponent,
     CartComponent,
     BodyComponent,
-    UserComponent
+    UserComponent,
+    SearchPipe,
+    ViewOrdersComponent
 
 
 
@@ -50,7 +55,9 @@ import { UserComponent } from './components/user/user.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    // Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

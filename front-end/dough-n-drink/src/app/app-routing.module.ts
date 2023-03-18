@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserComponent } from './components/user/user.component';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path:'body',component:BodyComponent},
   {path:'home',component:HomeComponent},
   {path:'about',component:AboutComponent},
- 
+  {path:'cart/:id',component:DetailsComponent},
   {path:'details/:id',component:DetailsComponent},
   {path:'desserts',component:DessertsComponent},
   {path:'cart',component:CartComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:"controlproduct",component:ControlproductComponent},
   {path:'',component:LoginComponent},
   {path:'registration',component:UserComponent},
+  {path:'viewOrders',component:ViewOrdersComponent  }
 
   
 ];

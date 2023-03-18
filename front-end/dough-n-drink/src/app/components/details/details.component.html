@@ -34,7 +34,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img [src]="product.image" alt="Image" class="img-fluid mr-3 mt-1  h-100"  > 
+                            <img [src]="product.image" alt="not found" class="img-fluid mr-3 mt-1  h-100"  > 
                         </div>
                     </div>
                 </div>
@@ -48,18 +48,18 @@
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus" >
+                            <button class="btn btn-primary btn-minus" (click)="decreaseProducts()">
                             <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" class="form-control bg-secondary text-center" [(ngModel)]="product.quantity" min="1" >
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <button class="btn btn-primary btn-plus" (click)="increaseProducts()">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
-                    <button  class="btn btn-primary px-3" routerLink="/cart"><i class="fa fa-shopping-cart mr-1" ></i> Add To Cart</button>
+                    <button (click)="addToCart(this.product)" class="btn btn-primary px-3" routerLink="/cart"><i class="fa fa-shopping-cart mr-1" ></i> Add To Cart</button>
                 </div>
             </div>
         </div>
@@ -73,12 +73,12 @@
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
         </div>
-        <div class="row px-xl-5" *ngFor="let item of products;">
-            <div class="col" >
+        <div class="row px-xl-5 justify-content-center" >
+            <div class="col-3 " *ngFor="let item of products;">
                 <div class="owl-carousel related-carousel">
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" [src]="item.image" alt="not found">
+                            <img class="img-fluid w-100" style="height:250px;" [src]="item.image" alt="not found">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3" >
                             <h6 class="text-truncate mb-3">{{item.name}}</h6>
@@ -87,8 +87,8 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a routerLink="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a routerLink="/cart" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            <a href="/details/{{item.productId}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <!-- <a routerLink="/cart" (click)="addToCart(this.item)" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a> -->
                         </div>
                     </div>
                 </div>
