@@ -65,7 +65,7 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
             
-                    <h1 class="m-0 display-5 font-weight-semi-bold">Welcome {{currentUser.fname}}</h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold ">Welcome {{currentUser.fname}}</h1>
              
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -87,23 +87,21 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <!-- <a href="" class="btn border">
-                    <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-                <a href="" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
-                </a> -->
+           
                 
-                <a routerLink="/logout" class="nav-item nav-link">Logout</a>
+                <a routerLink="/logout"  >Logout</a>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
 
+ 
+
+
+    
 
     <!-- Navbar Start -->
+    
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
@@ -193,37 +191,7 @@
     <!-- <app-home></app-home> -->
 
    
-    <!-- Featured Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featured End -->
-
+    
 
      <!-- Categories Start -->
      <div class="container-fluid pt-5">
@@ -232,7 +200,7 @@
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <!-- <p class="text-right">15 Products</p> -->
                     <a routerLink="/pizza" (click)="callPizzaSubcategory()" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2023%2F02%2F10%2F240376-homemade-pepperoni-pizza-Beauty-3x4-1.jpg&q=60&c=sc&orient=true&poi=auto&h=512" alt="">
+                        <img class="img-fluid" src=" https://www.foodandwine.com/thmb/4qg95tjf0mgdHqez5OLLYc0PNT4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Pizza</h5>
                 </div>
@@ -268,7 +236,7 @@
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" style="height: 410px;">
-                <img class="img-fluid">
+                <img src="https://www.fourreasonslegal.com/wp-content/uploads/2022/02/Can-You-Trademark-Your-Own-Coffee-Flavors.jpg" class="img-fluid">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 700px;">
                         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
@@ -295,35 +263,36 @@
 
 
     <!-- Products Start -->
-     <div class="container-fluid pt-5" >
-        <div class="text-center mb-4">
+     <div class="container" >
+        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
             <h2 class="section-title px-5"><span class="px-2">DoughNDrink</span></h2>
         </div>
-        <div class="row px-xl-5 pb-3 modify" style="display:flex; margin-left: 40%;" *ngFor="let product of products |search:searchText "  >
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" [src]="product.image" alt="">
+        <div  class="row "   > 
+        <div  class="col-md-4 col-sm-12" *ngFor="let product of products   "  >
+            <div class="product">
+            <div>
+                <div  >
+                    <div  >
+                        <img class="img" [src]="product.image" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{product.name}}</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>{{product.price}}</h6>
+                            <h6>{{product.price}} L.E</h6>
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
+                    <div class="card-footer text-center  d-flex justify-content-center bg-light border">
                         <!-- <button (click)="view()" class="btn btn-primary btn-sm"></button> -->
-                        <a routerLink="/details/{{product.productId}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a> 
+                        <a routerLink="/details/{{product.productId}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a> 
                     </div>
                 </div>
             </div>
             
+        </div>
             
             
             
-            
-            
+        </div>
             
         </div>
     </div>
