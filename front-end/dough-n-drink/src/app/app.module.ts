@@ -22,6 +22,7 @@ import { SearchPipe } from './search.pipe';
 import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter/src/ng2-filter.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -45,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BodyComponent,
     UserComponent,
     SearchPipe,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    ProfileComponent
 
 
 
