@@ -12,12 +12,15 @@ import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  
+  {path:'profile',component:ProfileComponent},
   {path:'contact',component:ContactComponent},
   {path:'drinks',component:DrinksComponent},
   {path:'pizza',component:PizzaComponent},

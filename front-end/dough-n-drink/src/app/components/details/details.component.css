@@ -1,0 +1,18 @@
+.img {
+    float: left;
+    width:  500px;
+    height: 400px;
+    background-size: cover;
+}
+
+.aa a:link, a:visited , a:hover   {
+    
+    /* background-color: #000000; */
+    color: rgb(0, 0, 0);
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgb(247, 246, 223);
+  }
+   
