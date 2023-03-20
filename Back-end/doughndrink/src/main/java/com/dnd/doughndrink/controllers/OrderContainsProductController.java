@@ -27,6 +27,7 @@ public class OrderContainsProductController {
         System.out.println(orderContainsProductDTO.getOrders());
         System.out.println(orderContainsProductDTO.getProduct());
         System.out.println(orderContainsProductDTO.getQuntity());
+        orderContainsProductService.save(orderContainsProductDTO);
     }
 
 
