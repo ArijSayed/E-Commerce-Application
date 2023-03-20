@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   `
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'DoughNDrink';
 
-  constructor(private _httpClient:HttpClient)
+  constructor()
   {
 
   }

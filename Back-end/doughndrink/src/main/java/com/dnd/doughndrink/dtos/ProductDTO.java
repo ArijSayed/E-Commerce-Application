@@ -13,7 +13,7 @@ public class ProductDTO {
     private float price;
     private String stock;
     private String description;
-    private byte[] image;
+    private String image;
     
     // public ProductDTO(String name, String size, float price, String stock,
     //         String description, byte[] image) {
