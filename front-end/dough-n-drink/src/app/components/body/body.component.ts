@@ -17,9 +17,7 @@ import { DetailsComponent } from '../details/details.component';
 })
 export class BodyComponent implements OnInit{
   searchText:any;
-  product:any; 
- 
- 
+  product:any;  
 
 
 firstName:string;
