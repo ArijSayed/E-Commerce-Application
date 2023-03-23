@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { ShareUserDataService } from 'src/app/services/share-user-data.service';
+import { Product } from 'src/app/models/product/product';
 
 
 
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit{
   visible:boolean=false;
   currentUser:User;
   auth_token:string;
+  cartItems:Product[]=[];
   
  
 
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit{
 
   login():void{
     let loginViewModel = this.loginForm.value as LoginViewModel;
+   
     
     if(!this.loginForm.valid){
       this.visible=!this.visible;
@@ -48,7 +51,10 @@ export class LoginComponent implements OnInit{
         if(response.success){        
           this.auth_token =response.data.accessToken;
           this._userService.addToken(this.auth_token);
+          localStorage.setItem("cart",JSON.stringify(this.cartItems));
+
           this._sharedUserData.setToken(this.auth_token);
+
           console.log(this.auth_token);
           this._userService.getUserById(response.data.id,this.getHeader(this.auth_token)).subscribe(
             response =>{
