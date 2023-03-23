@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { BodyComponent } from './components/body/body.component';
-import { CartComponent } from './components/cart/cart.component';
 import { DessertsComponent } from './components/categories/desserts/desserts.component';
 import { DrinksComponent } from './components/categories/drinks/drinks.component';
 import { PizzaComponent } from './components/categories/pizza/pizza.component';
@@ -23,6 +22,7 @@ import { ViewOrdersComponent } from './components/view-orders/view-orders.compon
 import { Ng2SearchPipeModule } from 'ng2-search-filter/src/ng2-filter.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -42,12 +42,13 @@ import { ProfileComponent } from './components/profile/profile.component';
     DrinksComponent,
     DetailsComponent,
     DessertsComponent,
-    CartComponent,
     BodyComponent,
     UserComponent,
     SearchPipe,
     ViewOrdersComponent,
-    ProfileComponent
+    ProfileComponent,
+    CartComponent,
+    
 
 
 

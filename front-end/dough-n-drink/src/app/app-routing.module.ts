@@ -20,23 +20,24 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   
-  {path:'profile',component:ProfileComponent},
-  {path:'contact',component:ContactComponent},
-  {path:'drinks',component:DrinksComponent},
-  {path:'pizza',component:PizzaComponent},
-  {path:'body',component:BodyComponent},
-  {path:'home',component:HomeComponent},
-  {path:'about',component:AboutComponent},
-  {path:'cart/:id',component:DetailsComponent},
-  {path:'details/:id',component:DetailsComponent},
-  {path:'desserts',component:DessertsComponent},
-  {path:'cart',component:CartComponent},
-  {path: "login", component:LoginComponent},
-  {path:"logout",component:LogoutComponent},
-  {path:"controlproduct",component:ControlproductComponent},
-  {path:'',component:LoginComponent},
-  {path:'registration',component:UserComponent},
-  {path:'viewOrders',component:ViewOrdersComponent  }
+  {path:'profile',component:ProfileComponent , canActivate:[AuthGuard]},
+  {path:'contact',component:ContactComponent , canActivate:[AuthGuard]},
+  {path:'drinks',component:DrinksComponent , canActivate:[AuthGuard]},
+  {path:'pizza',component:PizzaComponent , canActivate:[AuthGuard]},
+  {path:'body',component:BodyComponent , canActivate:[AuthGuard]},
+  {path:'home',component:HomeComponent , canActivate:[AuthGuard]},
+  {path:'about',component:AboutComponent , canActivate:[AuthGuard]},
+  {path:'cart/:id',component:DetailsComponent , canActivate:[AuthGuard]},
+  {path:'details/:id',component:DetailsComponent , canActivate:[AuthGuard]},
+  {path:'desserts',component:DessertsComponent , canActivate:[AuthGuard]},
+  {path:'cart',component:CartComponent , canActivate:[AuthGuard]},
+  {path: "login", component:LoginComponent },
+  {path:"logout",component:LogoutComponent },
+  {path:"controlproduct",component:ControlproductComponent , canActivate:[AuthGuard]},
+  {path:'',component:LoginComponent , canActivate:[AuthGuard]},
+  {path:'registration',component:UserComponent },
+  {path:'viewOrders',component:ViewOrdersComponent , canActivate:[AuthGuard]},
+
 
   
 ];

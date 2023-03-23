@@ -20,13 +20,15 @@ export class CartComponent implements OnInit {
   totalnship: any = 0
   auth_token!: any
   _router: Router;
-  p: any
+  p: any;
+  
+
 
   constructor(public productService: ProductService, _router: Router, private order: OrderService) { }
 
   ngOnInit(): void {
 
-    this.p = localStorage.getItem("product");
+    this.p = localStorage.getItem("cart");
     this.products = JSON.parse(this.p);
 
 
@@ -70,14 +72,14 @@ export class CartComponent implements OnInit {
     this.products.splice(index, 1)
     this.getCartTotal()
 
-    localStorage.setItem("product", JSON.stringify(this.products));
+    localStorage.setItem("cart", JSON.stringify(this.products));
 
   }
 
   clearCart() {
     this.products = []
     this.getCartTotal()
-    localStorage.setItem("product", JSON.stringify(this.products));
+    localStorage.setItem("cart", JSON.stringify(this.products));
 
   }
 
